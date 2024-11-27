@@ -1,4 +1,5 @@
 import React from 'react';
+import '../App.css'; // Assuming you have styles defined in this file
 
 const Dashboard = () => {
   const styles = {
@@ -11,9 +12,9 @@ const Dashboard = () => {
       width: '400px', // Fixed width to make it a square
       height: '400px', // Fixed height to match width
       margin: 'auto', // Center the container
-      backgroundColor: '#ffffff',
-      borderRadius: '12px',
-      boxShadow: '0 8px 20px rgba(0, 0, 0, 0.2)', // Attractive shadow effect
+      backgroundColor: 'rgba(0, 0, 0, 0.7)', /* Dark overlay for better contrast */
+      borderRadius: '20px', // Rounded corners
+      boxShadow: '0 4px 30px rgba(0, 0, 0, 0.5)',
       padding: '20px',
     },
     wrapper: {
@@ -21,7 +22,7 @@ const Dashboard = () => {
       justifyContent: 'center',
       alignItems: 'center',
       height: '100vh', // Full screen height to center the container
-      backgroundColor: '#f3f4f6', // Light gray background for contrast
+      // background: 'linear-gradient(135deg, #74ebd5, #ACB6E5)', // Attractive gradient background
     },
     button: {
       padding: '15px 40px',
