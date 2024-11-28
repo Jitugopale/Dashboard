@@ -96,8 +96,8 @@ const Login = () => {
       if (response.data.authToken) {
         localStorage.setItem('token', response.data.authToken);
         localStorage.setItem('userId', response.data.userId);
-        setEmail(''); // Clear email field
-        setPassword(''); // Clear password field
+        setEmail(''); 
+        setPassword(''); 
         console.log("Login successful, redirecting to DemoPage...");
         navigate('/dashboard');
       } else {
@@ -117,7 +117,7 @@ const Login = () => {
   const handleInputClick = (field) => {
     setClickedFields((prev) => ({
       ...prev,
-      [field]: true, // Set the clicked field to true
+      [field]: true, 
     }));
   };
 
@@ -137,8 +137,8 @@ const Login = () => {
             required
             style={styles.formControl}
             aria-label="Email"
-            onClick={() => handleInputClick('email')} // Track clicks on the email field
-            placeholder={clickedFields.email ? "" : "Email"} // Clear placeholder if clicked
+            onClick={() => handleInputClick('email')} 
+            placeholder={clickedFields.email ? "" : "Email"} 
           />
         </div>
         <div className="mb-3">
@@ -152,8 +152,8 @@ const Login = () => {
             required
             style={styles.formControl}
             aria-label="Password"
-            onClick={() => handleInputClick('password')} // Track clicks on the password field
-            placeholder={clickedFields.password ? "" : "Password"} // Clear placeholder if clicked
+            onClick={() => handleInputClick('password')} 
+            placeholder={clickedFields.password ? "" : "Password"} 
           />
         </div>
         <button type="submit" className="btn bn bn-primary btn-primary" style={loading ? { ...styles.btn, ...styles.btnDisabled } : styles.btn} disabled={loading}>

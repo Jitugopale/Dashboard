@@ -19,7 +19,7 @@ const App = () => {
           path="/dashboard"
           element={
             <ProtectedRoute>
-              <Logout />
+              {/* <Logout /> */}
               <Dashboard/>
             </ProtectedRoute>
           }

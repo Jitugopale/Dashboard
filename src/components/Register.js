@@ -16,23 +16,23 @@ const styles = {
 
   heading: {
     fontSize: "2rem",
-    color: "#4A90E2", // Light blue for a professional look
+    color: "#4A90E2", 
     marginBottom: "20px",
     fontWeight: "bold",
   },
 
   formControl: {
-    border: "1px solid #ddd",
-    borderRadius: "8px",
-    padding: "12px",
-    width: "100%",
-    fontSize: "1rem",
-    marginBottom: "15px",
-    transition: "border-color 0.3s ease-in-out",
+    border: '1px solid #ddd',
+    borderRadius: '8px',
+    padding: '12px',
+    width: '100%',
+    fontSize: '1rem',
+    marginBottom: '15px',
+    transition: 'border-color 0.3s ease-in-out',
   },
 
   formControlFocus: {
-    borderColor: "#4A90E2", // Blue border on focus
+    borderColor: "#4A90E2", 
     outline: "none",
     boxShadow: "0 0 5px rgba(74, 144, 226, 0.6)",
   },
@@ -41,6 +41,7 @@ const styles = {
     fontWeight: "bold",
     fontSize: "1rem",
     color: "#333",
+    marginRight:'460px'
   },
 
   btn: {
@@ -155,7 +156,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Set loading to true on form submission
+    setLoading(true); 
     try {
       const response = await axios.post(
         "http://localhost:5000/api/auth/createUser",
@@ -163,10 +164,8 @@ const Register = () => {
       );
 
       if (response.status === 201) {
-        // Expecting status 201 for successful creation
         setSuccess("Registration successful! Redirecting to login...");
-        setError(""); // Clear any previous errors
-        // Clear form fields after successful registration
+        setError(""); 
         setFormData({
           fname: "",
           Lname: "",
@@ -184,31 +183,28 @@ const Register = () => {
         setError(
           response.data.error || "Registration failed. Please try again."
         );
-        setSuccess(""); // Clear any previous success message
+        setSuccess("");
       }
     } catch (error) {
-      // Handle errors more gracefully
       if (error.response) {
-        // Backend responded with an error
         setError(
-          error.response.data.errors?.[0]?.msg || // Specific error message
+          error.response.data.errors?.[0]?.msg ||
             error.response.data.error ||
             "Error during registration. Please check your details and try again."
         );
       } else {
-        // Network or other errors
         setError("Network error. Please try again later.");
       }
-      setSuccess(""); // Clear any previous success message
+      setSuccess(""); 
     } finally {
-      setLoading(false); // Reset loading state after processing
+      setLoading(false); 
     }
   };
 
   const handleInputClick = (field) => {
     setClickedFields((prev) => ({
       ...prev,
-      [field]: true, // Set the clicked field to true
+      [field]: true, 
     }));
   };
 
@@ -223,7 +219,7 @@ const Register = () => {
       )}
       <form onSubmit={handleSubmit}>
         <div className="form-group" style={styles.formGroup}>
-          <label htmlFor="fname" style={styles.label}>
+          <label htmlFor="fname">
             {clickedFields.fname ? "First Name" : ""}
           </label>
           <input

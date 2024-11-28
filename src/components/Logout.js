@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Logout = () => {
+const Logout = ({style}) => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -18,13 +18,14 @@ const Logout = () => {
         } finally {
           setLoading(false);
         }
-      }, 500); // Short delay for smooth transition
+      }, 500); 
     }
   };
 
   return (
     <div role="alert">
       <button 
+      style={style}
         className="btn btn-danger" 
         onClick={handleLogout} 
         disabled={loading} 
