@@ -5,41 +5,57 @@ const Dashboard = () => {
   const styles = {
     container: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(2, auto)', // Two buttons per row
+      gridTemplateColumns: 'repeat(2, 1fr)', // Two buttons per row
       gap: '20px',
       justifyContent: 'center',
       alignItems: 'center',
-      width: '400px', // Fixed width to make it a square
-      height: '400px', // Fixed height to match width
+      width: '80%', // Adjusted width for better responsiveness
+      maxWidth: '600px', // Limit the max width to avoid excessive space on large screens
       margin: 'auto', // Center the container
-      backgroundColor: 'rgba(0, 0, 0, 0.7)', /* Dark overlay for better contrast */
-      borderRadius: '20px', // Rounded corners
-      boxShadow: '0 4px 30px rgba(0, 0, 0, 0.5)',
-      padding: '20px',
+      backgroundColor: '#ffffff', // Lighter background for a clean, professional feel
+      borderRadius: '15px', // Softer rounded corners
+      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)', // Subtle shadow for a floating effect
+      padding: '30px',
+      animation: 'fadeIn 1s ease-in-out', // Fade-in effect on page load
     },
     wrapper: {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
       height: '100vh', // Full screen height to center the container
-      // background: 'linear-gradient(135deg, #74ebd5, #ACB6E5)', // Attractive gradient background
+      background: 'linear-gradient(135deg, #A2C2E8, #F3F8FF)', // Soft gradient background for an elegant look
     },
     button: {
-      padding: '15px 40px',
-      fontSize: '18px',
-      fontWeight: 'bold',
+      padding: '16px 36px',
+      fontSize: '16px',
+      fontWeight: '600',
       color: '#ffffff',
       backgroundColor: '#007bff',
       border: 'none',
-      borderRadius: '8px',
+      borderRadius: '10px',
       cursor: 'pointer',
-      boxShadow: '0 6px 10px rgba(0, 0, 0, 0.15)', // Subtle button shadow
-      transition: 'transform 0.3s, background-color 0.3s',
+      boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)', // Subtle shadow to make buttons look elevated
+      transition: 'transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease',
+      width: '100%', // Make the buttons full width inside the grid container
+      minHeight: '50px', // Minimum height for buttons for better touch responsiveness
+      letterSpacing: '1px', // Added spacing to text for a cleaner look
     },
     buttonHover: {
-      backgroundColor: '#0056b3',
+      backgroundColor: '#0056b3', // Slightly darker blue on hover
+      transform: 'scale(1.05)', // Slight grow on hover for an interactive feel
+      boxShadow: '0 6px 20px rgba(0, 0, 0, 0.2)', // Slightly bigger shadow for more emphasis on hover
+    },
+    buttonFocus: {
+      outline: 'none',
+      boxShadow: '0 0 10px rgba(0, 123, 255, 0.8)', // Blue glow on focus
+    },
+    '@keyframes fadeIn': {
+      '0%': { opacity: 0 },
+      '100%': { opacity: 1 },
     },
   };
+  
+  
 
   return (
     <div style={styles.wrapper}>

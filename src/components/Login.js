@@ -2,6 +2,77 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 
+const styles = {
+  container: {
+    maxWidth: '500px',
+    margin: '0 auto',
+    padding: '20px',
+    backgroundColor: '#fff',
+    borderRadius: '10px',
+    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+    textAlign: 'center',
+  },
+  headingLogin: {
+    fontSize: '2rem',
+    color: '#4A90E2',
+    marginBottom: '20px',
+    fontWeight: 'bold',
+  },
+  formControl: {
+    border: '1px solid #ddd',
+    borderRadius: '8px',
+    padding: '12px',
+    width: '100%',
+    fontSize: '1rem',
+    marginBottom: '15px',
+    transition: 'border-color 0.3s ease-in-out',
+  },
+  formControlFocus: {
+    borderColor: '#4A90E2',
+    outline: 'none',
+    boxShadow: '0 0 5px rgba(74, 144, 226, 0.6)',
+  },
+  btn: {
+    backgroundColor: '#4A90E2',
+    color: 'white',
+    fontSize: '1.1rem',
+    padding: '12px',
+    border: 'none',
+    borderRadius: '8px',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s ease',
+    width: '100%',
+    marginBottom: '15px',
+  },
+  btnHover: {
+    backgroundColor: '#357ABD',
+  },
+  btnDisabled: {
+    backgroundColor: '#A3C4E2',
+    cursor: 'not-allowed',
+  },
+  alert: {
+    backgroundColor: '#F8D7DA',
+    color: '#721C24',
+    padding: '10px',
+    borderRadius: '8px',
+    marginBottom: '20px',
+  },
+  alertSuccess: {
+    backgroundColor: '#D4EDDA',
+    color: '#155724',
+    padding: '10px',
+    borderRadius: '8px',
+    marginBottom: '20px',
+  },
+  mt3: {
+    fontSize: '1rem',
+  },
+  link: {
+    color: '#4A90E2',
+    textDecoration: 'none',
+  }
+};
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -51,10 +122,10 @@ const Login = () => {
   };
 
   return (
-    <div className="container contain-2 mt-5">
-      <h2 className='heading-login'>Login</h2>
+    <div className="container contain-2 mt-5" style={styles.container}>
+      <h2 className='heading-login' style={styles.headingLogin}>Login</h2>
       <form onSubmit={handleLogin}>
-        {error && <div className="alert alert-danger" aria-live="polite">{error}</div>}
+        {error && <div className="alert alert-danger" aria-live="polite" style={styles.alert}>{error}</div>}
         <div className="mb-3">
           <label htmlFor="email">{clickedFields.email ? "Email" : ""}</label>
           <input
@@ -64,6 +135,7 @@ const Login = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            style={styles.formControl}
             aria-label="Email"
             onClick={() => handleInputClick('email')} // Track clicks on the email field
             placeholder={clickedFields.email ? "" : "Email"} // Clear placeholder if clicked
@@ -78,19 +150,20 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            style={styles.formControl}
             aria-label="Password"
             onClick={() => handleInputClick('password')} // Track clicks on the password field
             placeholder={clickedFields.password ? "" : "Password"} // Clear placeholder if clicked
           />
         </div>
-        <button type="submit" className="btn bn bn-primary btn-primary" disabled={loading}>
+        <button type="submit" className="btn bn bn-primary btn-primary" style={loading ? { ...styles.btn, ...styles.btnDisabled } : styles.btn} disabled={loading}>
           {loading ? 'Logging in...' : 'Login'}
         </button>
       </form>
 
       <div className="mt-3">
-        <p>
-          Not registered? <Link to="/register">Go to Register</Link>
+        <p style={styles.mt3}>
+          Not registered? <Link to="/register" style={styles.link}>Go to Register</Link>
         </p>
       </div>
     </div>

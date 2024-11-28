@@ -3,6 +3,125 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+const styles = {
+  container: {
+    maxWidth: "600px",
+    margin: "0 auto",
+    padding: "20px",
+    backgroundColor: "#fff",
+    borderRadius: "10px",
+    boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+    textAlign: "center",
+  },
+
+  heading: {
+    fontSize: "2rem",
+    color: "#4A90E2", // Light blue for a professional look
+    marginBottom: "20px",
+    fontWeight: "bold",
+  },
+
+  formControl: {
+    border: "1px solid #ddd",
+    borderRadius: "8px",
+    padding: "12px",
+    width: "100%",
+    fontSize: "1rem",
+    marginBottom: "15px",
+    transition: "border-color 0.3s ease-in-out",
+  },
+
+  formControlFocus: {
+    borderColor: "#4A90E2", // Blue border on focus
+    outline: "none",
+    boxShadow: "0 0 5px rgba(74, 144, 226, 0.6)",
+  },
+
+  label: {
+    fontWeight: "bold",
+    fontSize: "1rem",
+    color: "#333",
+  },
+
+  btn: {
+    backgroundColor: "#4A90E2",
+    color: "white",
+    fontSize: "1.1rem",
+    padding: "12px",
+    border: "none",
+    borderRadius: "8px",
+    cursor: "pointer",
+    transition: "background-color 0.3s ease",
+    width: "100%",
+    marginTop: "15px",
+  },
+
+  btnHover: {
+    backgroundColor: "#357ABD",
+  },
+
+  btnDisabled: {
+    backgroundColor: "#A3C4E2",
+    cursor: "not-allowed",
+  },
+
+  alert: {
+    padding: "10px",
+    borderRadius: "8px",
+    marginBottom: "20px",
+  },
+
+  alertDanger: {
+    backgroundColor: "#F8D7DA",
+    color: "#721C24",
+  },
+
+  alertSuccess: {
+    backgroundColor: "#D4EDDA",
+    color: "#155724",
+  },
+
+  mt3p: {
+    fontSize: "1rem",
+  },
+
+  mt3a: {
+    color: "#4A90E2",
+    textDecoration: "none",
+  },
+
+  mt3aHover: {
+    textDecoration: "underline",
+  },
+
+  formGroupInputFocus: {
+    backgroundColor: "#f9f9f9",
+  },
+
+  formGroupInputFocusPlaceholder: {
+    color: "transparent",
+  },
+
+  formGroup: {
+    marginBottom: "20px",
+  },
+
+  controller: {
+    padding: "12px",
+    fontSize: "1rem",
+  },
+
+  mt3: {
+    marginTop: "1rem",
+  },
+
+  mt3pBottom: {
+    fontSize: "1rem",
+    marginTop: "10px",
+  },
+};
+
+
 const Register = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -94,17 +213,17 @@ const Register = () => {
   };
 
   return (
-    <div className="container contain-1 mt-5">
-      <h2 className="heading">Register</h2>
+    <div className="container contain-1 mt-5" style={styles.container}>
+      <h2 className="heading" style={styles.heading}>Register</h2>
       {error && (
-        <div className="alert stand stand-danger alert-danger">{error}</div>
+        <div className="alert stand stand-danger alert-danger" style={{ ...styles.alert, ...styles.alertDanger }}>{error}</div>
       )}
       {success && (
-        <div className="alert stand stand-success alert-success">{success}</div>
+        <div className="alert stand stand-success alert-success"  style={{ ...styles.alert, ...styles.alertSuccess }}>{success}</div>
       )}
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="fname">
+        <div className="form-group" style={styles.formGroup}>
+          <label htmlFor="fname" style={styles.label}>
             {clickedFields.fname ? "First Name" : ""}
           </label>
           <input
@@ -117,6 +236,7 @@ const Register = () => {
             value={formData.fname}
             onChange={handleChange}
             required
+            style={styles.formControl}
           />
         </div>
         <div className="form-group">
@@ -133,6 +253,7 @@ const Register = () => {
             value={formData.Lname}
             onChange={handleChange}
             required
+            style={styles.formControl}
           />
         </div>
         <div className="form-group">
@@ -149,6 +270,7 @@ const Register = () => {
             value={formData.Address}
             onChange={handleChange}
             required
+            style={styles.formControl}
           />
         </div>
         <div className="form-group">
@@ -165,6 +287,7 @@ const Register = () => {
             value={formData.PhoneNo}
             onChange={handleChange}
             required
+            style={styles.formControl}
           />
         </div>
         <div className="form-group mt-3">
@@ -179,6 +302,7 @@ const Register = () => {
             value={formData.email}
             onChange={handleChange}
             required
+            style={styles.formControl}
           />
         </div>
         <div className="form-group mt-3">
@@ -195,6 +319,7 @@ const Register = () => {
             value={formData.password}
             onChange={handleChange}
             required
+            style={styles.formControl}
           />
         </div>
         <div className="form-group mt-3">
@@ -209,19 +334,21 @@ const Register = () => {
             value={formData.City}
             onChange={handleChange}
             required
+            style={styles.formControl}
           />
         </div>
         <button
           type="submit"
           className="btn bn bn-primary btn-primary"
+          style={loading ? { ...styles.btn, ...styles.btnDisabled } : styles.btn}
           disabled={loading}
         >
           {loading ? "Registering..." : "Register"}
         </button>
       </form>
-      <div className="mt-3">
-        <p>
-          Already registered? <Link to="/login">Go to Login</Link>
+      <div className="mt-3" style={styles.mt3}>
+        <p style={styles.mt3pBottom}>
+          Already registered? <Link to="/login" style={styles.mt3a}>Go to Login</Link>
         </p>
       </div>
     </div>
